@@ -7,9 +7,9 @@ def main():
 
     for i in range(1, count + 1):
         for j in range(1, i + 1):
-            memo[i] = max(memo[i], memo[i - j] + pack[j])
+            memo[i] = memo[i] if memo[i] > (memo[i - j] + pack[j]) else (memo[i - j] + pack[j])
 
-    print(max(memo))
+    sys.stdout.write(str(memo[-1]))
 
 if __name__ == "__main__":
     main()
