@@ -1,10 +1,10 @@
 import sys
 
 def main():
-    data = sys.stdin.readline().rstrip()
-    
-    for i in range(int(data) - (len(data) * 9) if int(data) - (len(data) * 9) > 0 else 0, int(data)):
-        if (i + sum(map(int, str(i)))) == int(data):
+    data = int(sys.stdin.readline().rstrip())
+
+    for i in range(data - (len(str(data)) * 9) if data - (len(str(data)) * 9) > 0 else 0, data):
+        if (i + sum(map(int, str(i)))) == data:
             sys.stdout.write(str(i))
             return
 
