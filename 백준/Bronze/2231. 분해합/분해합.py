@@ -2,12 +2,9 @@ import sys
 
 def main():
     data = sys.stdin.readline().rstrip()
-    length = len(data)
-
-    for i in range(int(data)):
-        num = sum(map(int, str(i)))
-
-        if (i + num) == int(data):
+    
+    for i in range(int(data) - (len(data) * 9) if int(data) - (len(data) * 9) > 0 else 0, int(data)):
+        if (i + sum(map(int, str(i)))) == int(data):
             sys.stdout.write(str(i))
             return
 
