@@ -1,22 +1,20 @@
+"""
+랭킹의 코드를 보고 고친 코드입니다.
+
+1. data = sys.stdin.read().split("ENTER")[1:] 사용
+2. for i in data 사용
+"""
+
 import sys
 
 def main():
-    num = int(sys.stdin.readline())
+    data = sys.stdin.read().split("ENTER")[1:]
     count = 0
-    name_set = set()
 
-    for _ in range(num):
-        buffer = sys.stdin.readline().rstrip()
+    for i in data:
+        count += len(set(i.split()))
 
-        if buffer != "ENTER":
-            name_set.add(buffer)
-        else:
-            count += len(name_set)
-            name_set.clear()
-
-    count += len(name_set)
     sys.stdout.write(str(count))
 
 if __name__ == "__main__":
     main()
-    
