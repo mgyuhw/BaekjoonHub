@@ -19,7 +19,7 @@ def divide(side, matrix, color):
 
 if __name__ == "__main__":
     n = int(sys.stdin.readline())
-    paper = [list(map(int, row.split())) for row in sys.stdin.read().rstrip().splitlines()]
+    paper = [list(map(int, row.split())) for row in sys.stdin.read().splitlines()]
     color = [0, 0]
     divide(n, paper, color)
 
