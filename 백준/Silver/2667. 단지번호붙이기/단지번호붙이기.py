@@ -1,24 +1,17 @@
 import sys
-from collections import deque
 
-def bfs(y, x):
-    queue = deque()
-    queue.append((y, x))
-    area = 0
+def dfs(y, x, space):
+    space += 1
 
-    while queue:
-        area += 1
-        y, x = queue.popleft()
+    for dy, dx in direction:
+        ny = y + dy
+        nx = x + dx
 
-        for dy, dx in direction:
-            ny = y + dy
-            nx = x + dx
+        if 0 <= nx < width and 0 <= ny < width and matrix[ny][nx]:
+            matrix[ny][nx] = 0
+            space = dfs(ny, nx, space)
 
-            if 0 <= nx < width and 0 <= ny < width and matrix[ny][nx]:
-                matrix[ny][nx] = 0
-                queue.append((ny, nx))
-
-    return area
+    return space
 
 if __name__ == "__main__":
     width = int(sys.stdin.readline())
@@ -32,8 +25,8 @@ if __name__ == "__main__":
             if matrix[i][j]:
                 matrix[i][j] = 0
                 count += 1
-                result.append(bfs(i, j))
-                
+                area = dfs(i, j, 0)
+                result.append(area)
+
     sys.stdout.write(str(count) + '\n')
     sys.stdout.write('\n'.join(map(str, sorted(result))))
-    
