@@ -1,18 +1,15 @@
 import sys
-sys.setrecursionlimit(200000 * 2)
-
-g_count = 1
 
 def dfs(edge):
-    global g_count
+    stack = [edge]
+    count = 1
 
-    visited[edge] = g_count
-    g_count += 1
-    node[edge].sort()
-
-    for i in node[edge]:
-        if not visited[i]:
-            dfs(i)
+    while stack:
+        edge = stack.pop()
+        if not visited[edge]:
+            visited[edge] = count
+            count += 1
+            stack.extend(sorted(node[edge], reverse = True))
 
 if __name__ == "__main__":
     data = list(map(int, sys.stdin.readline().split()))
@@ -23,7 +20,6 @@ if __name__ == "__main__":
         vertex = list(map(int, sys.stdin.readline().split()))
         node[vertex[0]].append(vertex[1])
         node[vertex[1]].append(vertex[0])
-
 
     dfs(data[2])
 
