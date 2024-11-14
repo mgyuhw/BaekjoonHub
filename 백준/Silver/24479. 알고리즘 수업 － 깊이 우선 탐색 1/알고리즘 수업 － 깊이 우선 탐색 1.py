@@ -17,9 +17,9 @@ if __name__ == "__main__":
     visited = [0] * (data[0] + 1)
 
     for i in range(data[1]):
-        vertex = list(map(int, sys.stdin.readline().split()))
-        node[vertex[0]].append(vertex[1])
-        node[vertex[1]].append(vertex[0])
+        vertex1, vertex2 = map(int, sys.stdin.readline().split())
+        node[vertex1].append(vertex2)
+        node[vertex2].append(vertex1)
 
     dfs(data[2])
 
