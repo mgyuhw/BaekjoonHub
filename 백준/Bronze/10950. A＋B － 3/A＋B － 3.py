@@ -1,6 +1,6 @@
-count = int(input())
+import sys
 
-for i in range(count):
-    a, b = map(int, input().split())
+data = list(map(int, sys.stdin.read().split()))
 
-    print(a + b)
+for i in range(1, data[0]*2+1, 2):
+    sys.stdout.write(str(data[i] + data[i+1]) + '\n')
